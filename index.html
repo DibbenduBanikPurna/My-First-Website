@@ -3,13 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping-cart</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Purna</h1>
-    <h3>Brazil neymar lodi khela pari na rafi vai bot</h3>
-        <h2>Brazil won :5</h2>
-        <button>submit</button>
-    
+    <div class="container login-part">
+        <h1 class="text-center pt-5 mt-5">Welcome To Purna,s Bank</h1>
+        <div class="login-btn pt-5 mt-5">
+            <h4>Login</h4>
+            <input type="email" placeholder="email" class="form-control">
+            <br>
+            <input type="password" placeholder="password" class="form-control">
+            <br>
+            <button class="btn btn-success" id="login-btn">Log In</button>
+        </div>
+    </div>
+    <!--transition-->
+    <div class="container pt-5 mt-5" id="transition">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit d">
+                    <h2>Deposit</h2>
+                    <h4> $ <span id="deposit-balance">00</span></h4>
+                </div>
+               
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw w">
+                    <h2>Withdraw</h2>
+                    <h4> $ <span id="withdraw-balance" >00</span></h4>
+                </div>
+               
+                
+            </div>
+            <div class="col-md-4">
+                <div class="balance b">
+                    <h2>Balance</h2>
+                    <h4> $ <span id="current-balance">1200</span></h4>
+                </div>
+               
+                
+            </div>
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-md-6">
+                <div class="login-btn">
+                    <h2>Deposit</h2>
+               
+                <input id="deposit-amount" type="text" placeholder="$ amount you want to deposit" class="form-control">
+                <br>
+                <button id="deposit-btn" class="btn btn-success">Deposit</button>
+                </div>
+                
+
+            </div>
+            <div class="col-md-6 ">
+                <div class="login-btn">
+                    <h2>Withdraw</h2>
+               
+                    <input id="withdraw-amount" type="text" placeholder="$ amount you want to withdraw" class="form-control">
+                    <br>
+                    <button id="withdraw-btn" class="btn btn-danger">Withdraw</button>
+                    
+                </div>
+               
+            </div>
+        </div>
+
+    </div>
+   
+   
+   
+    <!-- JavaScript Bundle with Popper -->
+    <script>
+
+        //log-in-part
+
+        logInButton=document.getElementById('login-btn')
+        logInButton.addEventListener('click',function(){
+            var logInPart=document.querySelector('.login-part').style.display="none"
+            var transition=document.querySelector('#transition').style.display="block"
+        })
+
+        //all functionality
+        function span(id,depositNumber){
+        var balance=document.getElementById(id).innerHTML;
+        var balanceNumber=parseFloat(balance);
+       
+        var total=balanceNumber+depositNumber;
+        
+        document.getElementById(id).innerHTML=total;
+
+      }
+      function values(id){
+        var Amount=document.getElementById(id).value;
+        var Number=parseFloat(Amount)
+        return Number
+
+      }
+
+
+
+        //deposit handle
+
+      depositBtn=document.getElementById('deposit-btn').addEventListener('click',function(){
+          //deposit-update
+       
+         var depositNumber= values('deposit-amount')
+       
+        span('deposit-balance',depositNumber)
+        
+        
+        //current-balance-update
+        span('current-balance',depositNumber)
+        document.getElementById('deposit-amount').value=""
+        
+      })
+     
+      
+      //withdraw-handle
+
+      withdrawBtn=document.getElementById('withdraw-btn').addEventListener('click',function(){
+      
+      var withdrawAmountNumber=values('withdraw-amount')
+       
+        //withdraw-amount
+        span('withdraw-balance',withdrawAmountNumber)
+      
+      
+        //current amount
+        span('current-balance',-1* withdrawAmountNumber)
+        document.getElementById('withdraw-amount').value=""
+      
+    })
+        
+
+    </script>
+ 
 </body>
 </html>

@@ -1,0 +1,25 @@
+.login-btn{
+    border-radius: 10px;
+   box-shadow: 5px 5px 10px gray;
+    padding: 35px;
+}
+#transition{
+    display: none;
+}
+.deposit{
+    background-color: slateblue;
+    color:white;
+}
+.withdraw{
+    background-color:pink ;
+    color: white;
+}
+.balance{
+    background-color: orange;
+    color: white;
+}
+.w,.d,.b{
+    padding: 40px;
+    border-radius: 10px;
+
+}
